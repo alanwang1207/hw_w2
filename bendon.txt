@@ -26,6 +26,7 @@ create table orders
   memberId int,
   bendonId int,
   price int NOT NULL,
+  time timestamp,
   CONSTRAINT memberId foreign key (memberId) references member (memberId)
   ON DELETE CASCADE
   ON UPDATE CASCADE,
