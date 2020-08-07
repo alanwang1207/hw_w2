@@ -1,0 +1,35 @@
+create table member
+(
+  memberId int auto_increment primary key,
+  name varchar(20) not null,
+  phone varchar(20) not null
+);
+insert into member  values (1,'harry','0939-123-456');
+insert into member  values (2,'toby','0939-456-789');
+insert into member  values (3,'bill','0939-789-123');
+
+create table bendon
+(
+  bendonId int auto_increment primary key,
+  name varchar(10) not null,
+  price int not null
+);
+
+insert into bendon  values (1,'照燒雞腿飯',60);
+insert into bendon  values (2,'炙燒牛排飯',80);
+insert into bendon  values (3,'日式豬排飯',60);
+insert into bendon  values (4,'炙燒鯛魚飯',75);
+
+create table orders
+(
+  orderId int auto_increment primary key,
+  memberId int,
+  bendonId int,
+  price int NOT NULL,
+  CONSTRAINT memberId foreign key (memberId) references member (memberId)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  CONSTRAINT bendonId foreign key (bendonId) references bendon (bendonId)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
