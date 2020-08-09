@@ -1,36 +1,47 @@
+--建立資料庫
+CREATE database dinbendon;
+USE dinbendon;
+
+-- 建立資料表
 create table member
 (
   memberId int auto_increment primary key,
-  name varchar(20) not null,
-  phone varchar(20) not null
+  memberName varchar(20) not null,
+  memberPhone varchar(20) not null,
+  companyName varchar(20) not null,
+  address varchar(50) not null
 );
-insert into member  values (1,'harry','0939-123-456');
-insert into member  values (2,'toby','0939-456-789');
-insert into member  values (3,'bill','0939-789-123');
 
-create table bendon
+CREATE TABLE restaurant(
+    restaurantId int auto_increment not null primary key,
+    restaurantName varchar(20) not null,
+    restaurantPhone varchar(20) not null,
+    restaurantAddress varchar(50) not null
+); 
+
+create table menu
 (
-  bendonId int auto_increment primary key,
-  name varchar(10) not null,
-  price int not null
+  menuId int auto_increment primary key,
+  restaurantId int not null,
+  dishName varchar(10) not null,
+  price int not null,
+  CONSTRAINT restaurantId foreign key (restaurantId) references reataurant (restaurantId)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
 );
-
-insert into bendon  values (1,'照燒雞腿飯',60);
-insert into bendon  values (2,'炙燒牛排飯',80);
-insert into bendon  values (3,'日式豬排飯',60);
-insert into bendon  values (4,'炙燒鯛魚飯',75);
 
 create table orders
 (
   orderId int auto_increment primary key,
   memberId int,
-  bendonId int,
-  price int NOT NULL,
-  time timestamp,
+  menuId int,
+  totalPrice int NOT NULL,
+  date timestamp,
   CONSTRAINT memberId foreign key (memberId) references member (memberId)
   ON DELETE CASCADE
   ON UPDATE CASCADE,
-  CONSTRAINT bendonId foreign key (bendonId) references bendon (bendonId)
+  CONSTRAINT menuId foreign key (menuId) references menu (menuId)
   ON DELETE CASCADE
   ON UPDATE CASCADE
 );
+
