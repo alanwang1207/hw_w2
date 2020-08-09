@@ -91,3 +91,9 @@ insert into orders (memberId, menuId, totalPrice) VALUES
 (3, 9, 70),
 (3, 10, 150),
 (3, 12, 85);
+
+
+select o.memberId,memberName,orderId,o.menuId,dishName,date
+from member m JOIN orders o on o.memberId=m.memberId
+	      JOIN menu me on me.menuId = o.menuId
+order by orderId asc
