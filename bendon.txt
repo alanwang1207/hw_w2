@@ -12,7 +12,7 @@ create table member
   address varchar(50) not null
 );
 
-CREATE TABLE restaurant(
+create table restaurant(
     restaurantId int auto_increment not null primary key,
     restaurantName varchar(20) not null,
     restaurantPhone varchar(20) not null,
@@ -25,7 +25,7 @@ create table menu
   restaurantId int not null,
   dishName varchar(10) not null,
   price int not null,
-  CONSTRAINT restaurantId foreign key (restaurantId) references reataurant (restaurantId)
+  CONSTRAINT restaurantId foreign key (restaurantId) references restaurant (restaurantId)
   ON DELETE CASCADE
   ON UPDATE CASCADE
 );
@@ -33,16 +33,14 @@ create table menu
 create table orders
 (
   orderId int auto_increment primary key,
-  memberId int,
-  menuId int,
+  memberId int not null,
+  menuId int not null,
   totalPrice int NOT NULL,
   date timestamp,
   CONSTRAINT memberId foreign key (memberId) references member (memberId)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE,
+  ON DELETE CASCADE,
   CONSTRAINT menuId foreign key (menuId) references menu (menuId)
   ON DELETE CASCADE
-  ON UPDATE CASCADE
 );
 
 --匯入資料
@@ -61,19 +59,18 @@ insert into restaurant (restaurantName, restaurantPhone, restaurantAddress) VALU
 
 -- menu
 insert into menu (restaurantId, dishName, price) VALUES 
-
-insert into bendon  values (1,'辣子雞肉飯',60);
-insert into bendon  values (1,'咖哩雞肉飯',70);
-insert into bendon  values (1,'滷排骨飯',80);
-insert into bendon  values (2,'軟骨便當',60);
-insert into bendon  values (2,'排骨便當',70);
-insert into bendon  values (2,'鐵路便當',80);
-insert into bendon  values (3,'炸雞腿飯',60);
-insert into bendon  values (3,'炸豬排飯',65);
-insert into bendon  values (3,'排骨飯',70);
-insert into bendon  values (4,'蝦捲鯛魚飯',75);
-insert into bendon  values (4,'雞腿排飯',80);
-insert into bendon  values (4,'沙茶牛肉飯',85);
+(1,'辣子雞肉飯',60),
+(1,'咖哩雞肉飯',70),
+(1,'滷排骨飯',80),
+(2,'軟骨便當',60),
+(2,'排骨便當',70),
+(2,'鐵路便當',80),
+(3,'炸雞腿飯',60),
+(3,'炸豬排飯',65),
+(3,'排骨飯',70),
+(4,'蝦捲鯛魚飯',75),
+(4,'雞腿排飯',80),
+(4,'沙茶牛肉飯',85);
 
 --orders
 insert into orders (memberId, menuId, totalPrice) VALUES 
