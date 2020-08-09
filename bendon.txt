@@ -45,3 +45,43 @@ create table orders
   ON UPDATE CASCADE
 );
 
+--匯入資料
+--member
+insert into member  (memberName, memberPhone, companyName, address) VALUES 
+('Alan', '0939-456-789', '中佑集團', '台中市西屯區市政北二路238號'),
+('Bill', '0939-789-123', '王品集團', '台中市西區台灣大道二段218號'),
+('jessie', '0925-123-456', '喜客來股份有限公司', '台中市西屯區台灣大道三段251號');
+
+-- reataurant
+insert into restaurant (restaurantName, restaurantPhone, restaurantAddress) VALUES 
+('好旺飯包', '台中市龍井區台灣大道五段', '04-2259-4188'),
+('周大福鐵路便當', '台中市西屯區西屯路二段', '04-2452-1311'),
+('劉江便當', '台中市西屯區福順路', '04-2255-3833'),
+('好日子雙主菜便當', '台中市西屯區黎明路二段', '04-2254-6399');
+
+-- menu
+insert into menu (restaurantId, dishName, price) VALUES 
+
+insert into bendon  values (1,'辣子雞肉飯',60);
+insert into bendon  values (1,'咖哩雞肉飯',70);
+insert into bendon  values (1,'滷排骨飯',80);
+insert into bendon  values (2,'軟骨便當',60);
+insert into bendon  values (2,'排骨便當',70);
+insert into bendon  values (2,'鐵路便當',80);
+insert into bendon  values (3,'炸雞腿飯',60);
+insert into bendon  values (3,'炸豬排飯',65);
+insert into bendon  values (3,'排骨飯',70);
+insert into bendon  values (4,'蝦捲鯛魚飯',75);
+insert into bendon  values (4,'雞腿排飯',80);
+insert into bendon  values (4,'沙茶牛肉飯',85);
+
+--orders
+insert into orders (memberId, menuId, totalPrice) VALUES 
+(1, 1, 60),
+(1, 2, 140),
+(2, 3, 80),
+(2, 4, 120),
+(3, 5, 70),
+(3, 6, 80),
+(4, 7, 60),
+(4, 8, 65);
