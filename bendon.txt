@@ -27,7 +27,7 @@ create table menu
   restaurantId int not null,
   dishName varchar(10) not null,
   price int not null,
-  CONSTRAINT restaurant foreign key (restaurantId) references restaurant (restaurantId)
+  CONSTRAINT fk_restaurantId foreign key (restaurantId) references restaurant (restaurantId)
   ON DELETE CASCADE
   ON UPDATE CASCADE
 );
