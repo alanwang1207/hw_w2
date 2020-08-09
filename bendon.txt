@@ -1,8 +1,7 @@
---建立資料庫
 CREATE database dinbendon;
 USE dinbendon;
 
--- 建立資料表
+
 create table member
 (
   memberId int auto_increment primary key,
@@ -43,21 +42,20 @@ create table orders
   ON DELETE CASCADE
 );
 
---匯入資料
---member
+
 insert into member  (memberName, memberPhone, companyName, address) VALUES 
 ('Alan', '0939-456-789', '中佑集團', '台中市西屯區市政北二路238號'),
 ('Bill', '0939-789-123', '王品集團', '台中市西區台灣大道二段218號'),
 ('jessie', '0925-123-456', '喜客來股份有限公司', '台中市西屯區台灣大道三段251號');
 
--- reataurant
+
 insert into restaurant (restaurantName, restaurantPhone, restaurantAddress) VALUES 
 ('好旺飯包', '台中市龍井區台灣大道五段', '04-2259-4188'),
 ('周大福鐵路便當', '台中市西屯區西屯路二段', '04-2452-1311'),
 ('劉江便當', '台中市西屯區福順路', '04-2255-3833'),
 ('好日子雙主菜便當', '台中市西屯區黎明路二段', '04-2254-6399');
 
--- menu
+
 insert into menu (restaurantId, dishName, price) VALUES 
 (1,'辣子雞肉飯',60),
 (1,'咖哩雞肉飯',70),
@@ -72,7 +70,7 @@ insert into menu (restaurantId, dishName, price) VALUES
 (4,'雞腿排飯',80),
 (4,'沙茶牛肉飯',85);
 
---orders
+
 insert into orders (memberId, menuId, totalPrice) VALUES 
 (1, 1, 60),
 (1, 2, 140),
